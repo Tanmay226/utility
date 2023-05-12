@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag and drop using javascript</title>
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            background: rgb(230, 202, 202);
+        }
+
+        .container .whitebox {
+            height: 300px;
+            width: 300px;
+            border: 2px solid #c78a8a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            background: #161514;
+            transition: all 0.4s;
+        }
+
+        .whitebox .imgbox {
+            width: 100%;
+            height: 100%;
+            background: url(./img/1.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* border-radius: 50%; */
+            cursor: pointer;
+            border: 1px solid #6c6767;
+        }
+
+        .whitebox .hide {
+            display: none;
+        }
+
+        .whitebox .hold {
+            border: 5px solid black;
+        }
+
+        .container .dashed {
+            background: rgb(186, 148, 87);
+            border: 2px dashed #302e2e;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="whitebox">
+            <div class="imgbox" draggable="true"></div>
+        </div>
+        <div class="whitebox"></div>
+        <div class="whitebox"></div>
+        <div class="whitebox"></div>
+    </div>
+
+    <script>
+        console.log("this is drag and drop utility");
+
+        let imgbox = document.querySelector(".imgbox");
+        let whiteboxes = document.querySelectorAll(".whitebox");
+
+        // console.log(whiteboxes)
+
+        imgbox.addEventListener("dragstart", (e) => {
+            console.log("dragstart has been start")
+            imgbox.classList.add("hold")
+            setTimeout(() => {
+                imgbox.classList.add("hide")
+
+
+            }, 0);
+
+        });
+        imgbox.addEventListener("dragend", () => {
+            console.log("dragend has been start");
+
+            imgbox.classList = "imgbox"
+
+        });
+
+        // for of loop use for loop all the white boxes and some add event listener
+        for (whitebox of whiteboxes) {
+
+            whitebox.addEventListener("dragover", (e) => {
+                e.preventDefault()
+                console.log("1")
+            })
+
+            whitebox.addEventListener("dragenter", (e) => {
+                console.log("2")
+                // whiteboxes.classList.add("dashed");
+                e.target.classList += " dashed"
+            })
+
+            whitebox.addEventListener("dragleave", (e) => {
+                console.log("3");
+                e.target.classList = "whitebox";
+
+            })
+            whitebox.addEventListener("drop", (e) => {
+                // console.log("drop has been triggered")
+                // alert("i am drop")
+                // append is called on the parent element to append the new element to it.
+                e.target.append(imgbox)
+            })
+
+        }
+
+        
+    </script>
+
+   <script>
+        Notification.requestPermission().then(response =>{
+            if(response !== 'granted'){
+                console.log("why you no give permission ")
+                return;
+            }
+            const notification = new Notification('Subscribe to my YouTube Channel!',{
+                body: 'I create a shorts on tips & tricks like this and awsome project on vanilla javascript',
+                icon:   "path/to/icon.png" //'./1.png'
+            });
+
+            notification.onclick= ()=>{
+                window.focus();
+                alert("Yayy! go to youtube @codeWithsohil");
+                console.log("this is notiofication");
+                
+                // now you can set windows function set location where you want to go
+                window.location.href="https://google.com";
+
+            }
+        })
+    </script> 
+
+    <!-- <script>
+        // Request permission to show notifications
+Notification.requestPermission().then(function(permission) {
+  if (permission === "granted") {
+    // Create a new notification
+    var notification = new Notification("Hello, world!", {
+      body: "This is a notification.",
+      icon: "path/to/icon.png"
+    });
+
+    // Handle click event on the notification
+    notification.onclick = function() {
+      console.log("Notification clicked");
+    };
+  }
+});
+
+    </script> -->
+</body>
+
+</html>

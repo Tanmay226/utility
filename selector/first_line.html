@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sudo selector</title>
+
+    <style>
+      /* how to select first line of element */
+      .intro::first-line {
+        background-color: red;
+        font-size: 40px;
+      }
+
+      /* this sudo selector that use for highlight text */
+      .intro::selection {
+        color: rgb(240, 6, 6);
+        background: rgb(236, 236, 9);
+      }
+
+      /* this sudo selector that use for highlight first letter */
+      .intro::first-letter {
+        color: rgb(240, 6, 6);
+        background: rgb(236, 236, 9);
+      }
+
+      /* this sudo selector that use for highlight to target the hyperlink */
+      a[target] {
+        background-color: red;
+      }
+
+      /* this sudo selector that use for highlight to target the img title */
+      img[title~="blue"] {
+        border: 5px solid red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="intro">
+      In my younger and more vulnerable years my father gave me some advice that
+      I've been turning over in my mind ever since. 'Whenever you feel like
+      criticizing anyone,' he told me, 'just remember that all the people in
+      this world haven't had the advantages that you've had.'
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, vitae
+      facilis! Quod laborum eaque illo repellendus sunt odio est voluptatem?
+      Quam dolore cum sit! Odio saepe laborum similique dicta sint autem error
+      sequi ad officiis accusamus at non aperiam corporis, ratione quia dolore
+      suscipit accusantium, quos ut quod cum voluptatem! Cupiditate sequi
+      molestiae itaque! Repellendus tenetur vero neque esse veniam nostrum
+      aspernatur maxime in dolores. Vitae perferendis vero dolorum saepe et
+      suscipit asperiores quasi tempore. Nisi commodi provident aspernatur
+      numquam unde reprehenderit eveniet, saepe facilis quasi? Sapiente nulla
+      obcaecati quae porro maiores, veniam voluptate! Totam reiciendis nulla
+      dignissimos numquam ipsa.
+    </p>
+
+    <a href="https://w3schools.com">w3schools.com</a>
+    <a href="http://disney.com" target="_blank">Disney.com</a>
+    <a href="http://wikipedia.org" target="_top">wikipedia.org</a>
+
+    <!-- image title selector -->
+    <img src="./menu-2.png" title="blue flower" />
+    <img src="./menu-2.png" title="purple flowers" />
+    <img src="./menu-2.png" title="two blue flowers" />
+  </body>
+</html>
